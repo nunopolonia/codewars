@@ -4,9 +4,7 @@ defmodule Snail do
   end
   def snail([]), do: []
 
-  def transpose([[x | xs] | xss]) do
-    [[x | (for [h | _] <- xss, do: h)] | transpose([xs | (for [_ | t] <- xss, do: t)])]
+  def transpose(matrix) do
+    matrix |> List.zip |> Enum.map(&Tuple.to_list(&1))
   end
-  def transpose([[] | xss]), do: transpose(xss)
-  def transpose([]), do: []
 end
